@@ -1,0 +1,12 @@
+Name : adi
+Mobile number : 9876543210
+Email : aditya@gmail.com
+
+Name: Kapil 
+Mobile number: 1234567890 
+Email: kapil@gmail.com 
+
+Name: Rahul 
+Mobile number: 1235678904 
+Email: rahul@gmail.com 
+
