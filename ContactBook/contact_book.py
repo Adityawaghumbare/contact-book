@@ -7,8 +7,7 @@ def view_contacts():
         content = f.read()
         print(content)
 
-def search_contact():
-    name =input("Enter name : ")
+def search_contact(name):
     found = False
 
     with open("contact_file.txt","r") as f:
@@ -23,8 +22,7 @@ def search_contact():
                 found =  True
                 break
 
-def delete_contact():
-    name = input("Enter Contact Name to Delete : ") 
+def delete_contact(name):
     found =  False
 
     with open("contact_file.txt","r") as f :
@@ -56,8 +54,8 @@ def delete_contact():
         print("Contact Not Found!")
 
 
-def edit_contacts():
-    name = input("Enter name to edit : ")
+def edit_contacts(name, new_name, new_mobno, new_email):
+    
     found = False
 
     with open("contact_file.txt","r") as f :
@@ -71,10 +69,6 @@ def edit_contacts():
             print(lines[i], end="")
             print(lines[i+1], end="")
             print(lines[i+2], end="")
-
-            new_name = input("\nEnter New Name : ")
-            new_mobno = input("Enter New Mobile Number : ")
-            new_email = input("Enter New Email : ")
 
             lines[i] = f"Name : {new_name}\n"
             lines[i+1] = f"Mobile number : {new_mobno}\n"
@@ -98,7 +92,8 @@ def total_contacts():
     except FileNotFoundError:
         print("\n\nTotal number of Contacts : 0")
 
-while True:
+if __name__ == "__main__":
+  while True:
     print("\n\n- - - - - - - - - - - Contact Book - - - - - - - - -\n\n")
     print("1. Add Contact")
     print("2. View All Contacts")
@@ -110,23 +105,37 @@ while True:
     print("- - - - - - - - - - - - - - - - - - - - - - - - - - - \n")
 
     n = int(input("Enter Your Choice : "))
+    
     if n == 1 :
         name = input("Enter your name : ")
         mobno = input("Mobile number : ")
         email = input("Email : ")
         add_contact(name, mobno, email)
         print("Details added!")
+    
     elif n == 2:
         view_contacts()
+    
     elif n == 3 :
-        search_contact()
+        name =input("Enter name : ")
+        search_contact(name)
+    
     elif n == 4 :
-        delete_contact()
+        name = input("Enter Contact Name to Delete : ") 
+        delete_contact(name)
+    
     elif n == 5 :
-        edit_contacts()
+        name = input("Enter name to edit : ")
+        new_name = input("\nEnter New Name : ")
+        new_mobno = input("Enter New Mobile Number : ")
+        new_email = input("Enter New Email : ")
+        edit_contacts(name, new_name, new_mobno, new_email)
+
     elif n == 6 :
         total_contacts()
+    
     elif n == 7:
         exit()
+    
     else :
         print("Invalid Choice!")
